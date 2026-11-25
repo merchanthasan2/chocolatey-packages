@@ -1,0 +1,47 @@
+name: Pack and Publish Chocolatey Package
+
+on:
+  workflow_dispatch:
+    inputs:
+      push_to_chocolatey:
+        description: 'Push .nupkg to community.chocolatey.org (requires CHOCOLATEY_API_KEY secret)'
+        type: boolean
+        default: true
+  push:
+    branches: [main]
+    paths: ['netspeedboss/**']
+
+jobs:
+  chocolatey:
+    runs-on: windows-latest
+    env:
+      CHOCOLATEY_API_KEY: ${{ secrets.CHOCOLATEY_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Pack netspeedboss
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force out | Out-Null
+          choco pack netspeedboss/netspeedboss.nuspec --output-directory out
+          Get-ChildItem out
+
+      - name: Test install and uninstall locally on runner
+        shell: pwsh
+        run: |
+          $pkg = Get-ChildItem out/*.nupkg | Select-Object -First 1
+          choco install netspeedboss -dv -y --source "$((Resolve-Path out).Path)"
+          choco uninstall netspeedboss -dv -y
+
+      - name: Upload .nupkg artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: netspeedboss-nupkg
+          path: out/*.nupkg
+
+      - name: Push to Chocolatey Community Repository
+        if: ${{ env.CHOCOLATEY_API_KEY != '' && (github.event_name != 'workflow_dispatch' || github.event.inputs.push_to_chocolatey == 'true') }}
+        shell: pwsh
+        run: |
+          $pkg = Get-ChildItem out/*.nupkg | Select-Object -First 1
+          choco push $pkg.FullName --source https://push.chocolatey.org/ --api-key $env:CHOCOLATEY_API_KEY
