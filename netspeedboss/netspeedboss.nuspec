@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>netspeedboss</id>
-    <version>1.3.1</version>
+    <version>1.4.0</version>
     <packageSourceUrl>https://github.com/merchanthasan2/chocolatey-packages/tree/main/netspeedboss</packageSourceUrl>
     <owners>merchanthasan2</owners>
     <title>NetSpeed Boss</title>
@@ -15,18 +15,18 @@
     <projectSourceUrl>https://github.com/merchanthasan2/NetSpeedBoss</projectSourceUrl>
     <docsUrl>https://github.com/merchanthasan2/NetSpeedBoss#readme</docsUrl>
     <bugTrackerUrl>https://github.com/merchanthasan2/NetSpeedBoss/issues</bugTrackerUrl>
-    <tags>netspeedboss network-monitor bandwidth speed-meter taskbar gaming-hud speedtest windows freeware foss</tags>
-    <summary>Live network upload and download speed on your Windows taskbar, with Gaming HUD and multi-WAN support.</summary>
-    <description>NetSpeed Boss shows your real-time download and upload speed on the Windows taskbar, next to the clock, alongside a full network and hardware monitor.
+    <tags>netspeedboss network-monitor bandwidth speed-meter taskbar gaming-hud speedtest ip-scanner bufferbloat windows freeware foss</tags>
+    <summary>Live Windows taskbar speed meter with Network Lab, LAN IP scanner, Bufferbloat doctor, Gaming HUD v2, and Display controls.</summary>
+    <description>NetSpeed Boss shows your real-time download and upload speed on the Windows taskbar alongside a full network lab, hardware monitor, and display controller.
 
 ### Features
-- **Taskbar speed meter** that blends into Windows light and dark mode and hides for full-screen apps
-- **Dual-WAN / load-balancing awareness &amp; built-in Speed Test** showing combined speeds across active adapters and per-adapter breakdowns
-- **Gaming HUD overlay** with background-only transparency, crisp opaque text, RAG thresholds, FPS, CPU/GPU temps &amp; load, VRAM usage, RAM, Ping, and Down/Up speeds
-- **Live speed graph &amp; System Info tab** with adapter link details, CPU/GPU/VRAM/memory telemetry, and top downloading apps
-- **Per-app network view &amp; data usage history** for daily, monthly, and custom date ranges with CSV export and optional monthly data cap alerts
-- **Floating always-on-top mini meter** with edge snapping and optional click-through mode</description>
-    <releaseNotes>https://github.com/merchanthasan2/NetSpeedBoss/releases/tag/v1.3.1</releaseNotes>
+- **Taskbar speed meter** auto-positioned in open space near the Windows 11 Weather bar (or freely draggable), dark/light adaptive, defaulting to bits (Mbps/Kbps) or bytes
+- **Network Lab tab** with multi-stream Speedtest + history, **Bufferbloat &amp; Lag Doctor** (Grade A+ to F), **DNS benchmark**, **Wireless (Wi-Fi)** card + **Channel Congestion Analyzer**, **ISP Uptime &amp; Outage SLA logger**, and **LAN/ARP IP Scanner** with Trusted Device Watchdog &amp; Wake-on-LAN
+- **Gaming HUD v2** with Card &amp; Horizontal Top-Strip modes, background-only transparency, 1% Low FPS, NVIDIA NVML + AMD ADL sensors, VRAM, RAG thresholds, and global hotkeys (`Ctrl+Shift+H/L/M`)
+- **Displays tab** with native Win32 DDC/CI hardware Brightness/Contrast sliders, Refresh Rate (Hz), and Input Source switching across external and laptop monitors
+- **Apps, Ports &amp; Firewall** with ETW per-app traffic, first-time app alerts, 1-click Windows Firewall block/unblock, and Listening Ports killer
+- **Data usage &amp; per-Wi-Fi SSID caps** with click-a-date app breakdown and Excel-ready CSV exports</description>
+    <releaseNotes>https://github.com/merchanthasan2/NetSpeedBoss/releases/tag/v1.4.0</releaseNotes>
   </metadata>
   <files>
     <file src="tools\**" target="tools" />
